@@ -3,6 +3,7 @@ import 'bookModels.dart';
 import 'detail.dart';
 
 class LibraryPage extends StatelessWidget {
+  //karena daftar buku diambil langsung dari data statis (bookList) dan tidak ada status interaktif yang diubah langsung pada halaman ini.
   const LibraryPage({super.key});
 
   @override
@@ -20,11 +21,11 @@ class LibraryPage extends StatelessWidget {
         ),
         backgroundColor: const Color(0xFFFFF2CB),
         elevation: 0,
-        centerTitle: false,
+        centerTitle: false, //Mengatur posisi judul berada di sebelah kiri.
       ),
-      body: ListView.builder(
+      body: ListView.builder( //Widget efisien yang bertugas merender daftar buku secara berulang sesuai panjang data yang ada.
         padding: const EdgeInsets.all(20),
-        itemCount: bookList.length,
+        itemCount: bookList.length, //Menentukan berapa banyak item kartu buku yang dibuat berdasarkan total data di bookList
         itemBuilder: (context, index) {
           final book = bookList[index];
           return Container(
@@ -40,7 +41,7 @@ class LibraryPage extends StatelessWidget {
                 ),
               ],
             ),
-            child: InkWell(
+            child: InkWell( //Membuat seluruh area kartu bisa diklik.
               borderRadius: BorderRadius.circular(20),
               onTap: () {
                 Navigator.push(
@@ -54,7 +55,7 @@ class LibraryPage extends StatelessWidget {
                 padding: const EdgeInsets.all(12.0),
                 child: Row(
                   children: [
-                    Hero(
+                    Hero( //Membuat efek animasi transisi gambar yang "mencair" halus saat berpindah dari halaman daftar ke halaman detail buku.
                       tag: book.title,
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(14),
